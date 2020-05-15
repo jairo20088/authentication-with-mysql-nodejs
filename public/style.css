@@ -1,0 +1,70 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+nav {
+  background-color: rgba(199, 119, 15, 0.767);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+ul {
+  list-style: none;
+}
+li {
+  display: inline;
+  margin-left: 1rem;
+}
+li a {
+  font-size: 2.3rem;
+  text-decoration: none;
+}
+a:visited,
+a:link {
+  padding: 1rem;
+  color: #fff;
+}
+a:hover {
+  background-color: rgba(146, 88, 11, 0.767);
+}
+.form {
+  display: inline-block;
+  font-size: 2rem;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.main_form {
+  display: inline-block;
+  text-align: right;
+}
+.main_form input {
+  padding: 0.6rem 0;
+  width: 20rem;
+  margin: 8px 0;
+}
+button {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  outline: none;
+  padding: 0.8rem 3rem;
+  color: #fff;
+  border: none;
+  background-color: rgba(199, 119, 15, 0.767);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+button:hover {
+  background-color: rgba(124, 75, 11, 0.767);
+}
