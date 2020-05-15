@@ -14,11 +14,15 @@
         <li class="main-nav__item"><a href="/">Blog</a></li>
       </ul>
       <ul class="main-nav__items">
-        <li class="main-nav__item active"><a href="/signin">Sign In</a></li>
-        <li class="main-nav__item"><a href="/signup">Sign Up</a></li>
+        <li class="main-nav__item"><a href="/signin">Sign In</a></li>
+        <li class="main-nav__item active"><a href="/signup">Sign Up</a></li>
       </ul>
     </nav>
     <form class="main__form" action="/" method="POST">
+      <div class="main__form-container">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" />
+      </div>
       <div class="main__form-container">
         <label for="email">Email</label>
         <input type="email" name="email" id="email" />
@@ -27,7 +31,11 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password" />
       </div>
-      <button class="btn" type="submit">Sigh In</button>
+      <div class="main__form-container">
+        <label for="confirm">Confirm Password</label>
+        <input type="password" name="confirm" id="confirm" />
+      </div>
+      <button class="btn" type="submit">Submit</button>
     </form>
   </body>
 </html>

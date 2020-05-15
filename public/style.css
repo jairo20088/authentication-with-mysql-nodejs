@@ -15,46 +15,55 @@ nav {
   display: flex;
   justify-content: space-between;
 }
-ul {
-  list-style: none;
-}
-li {
-  display: inline;
-  margin-left: 1rem;
-}
-li a {
-  font-size: 2.3rem;
-  text-decoration: none;
-}
-a:visited,
-a:link {
-  padding: 1rem;
-  color: #fff;
-}
-a:hover {
-  background-color: rgba(146, 88, 11, 0.767);
-}
-.form {
-  display: inline-block;
-  font-size: 2rem;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.main_form {
-  display: inline-block;
+.main__form {
+  width: 25rem;
+  max-width: 100%;
+  margin: 3rem auto;
   text-align: right;
 }
-.main_form input {
-  padding: 0.6rem 0;
-  width: 20rem;
-  margin: 8px 0;
-}
-button {
+.main__form-container label,
+.main__form-container input {
   display: block;
-  margin: 0 auto;
+  margin-top: 0.6rem;
+  font-size: 2rem;
+  width: 100%;
+}
+.main__form-container {
+  text-align: left;
+}
+.main__form-container input {
+  font-size: 1.3rem;
+  height: 3rem;
+  outline: none;
+  border: 2px solid rgba(223, 165, 89, 0.767);
+}
+.main__form-container input:focus {
+  border: 2px solid rgba(112, 75, 25, 0.767);
+}
+
+.main-nav__items {
+  list-style: none;
+}
+.main-nav__item {
+  font-size: 1.7rem;
+  display: inline-block;
+}
+.main-nav__item a:link,
+.main-nav__item a:visited {
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+}
+
+.main-nav__item a:hover {
+  background-color: rgba(167, 100, 14, 0.767);
+}
+.active a {
+  background-color: rgba(167, 100, 14, 0.767);
+}
+
+.btn {
+  text-align: right;
   font-size: 1.6rem;
   margin-top: 1rem;
   outline: none;
@@ -65,6 +74,7 @@ button {
   cursor: pointer;
   transition: all 0.2s;
 }
+
 button:hover {
   background-color: rgba(124, 75, 11, 0.767);
 }

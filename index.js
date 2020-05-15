@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 
 const authRoute = require("./routes/auth");
+const homepageRoute = require("./routes/index");
 const sequelize = require("./util/database");
 const bodyParser = require("body-parser");
 
@@ -13,6 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(authRoute);
+app.use(homepageRoute);
 
 sequelize
   .sync()
