@@ -78,3 +78,18 @@ nav {
 button:hover {
   background-color: rgba(124, 75, 11, 0.767);
 }
+.blog {
+  list-style: none;
+}
+.blog li {
+  font-size: 1.5rem;
+  width: 70%;
+  margin: 2rem auto;
+  padding: 1rem;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.527), -4px -4px 8px rgb(235, 235, 235);
+  border-radius: 1rem;
+}
+h1 {
+  font-size: 5rem;
+  text-align: center;
+}

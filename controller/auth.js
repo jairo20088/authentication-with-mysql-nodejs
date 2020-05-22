@@ -1,4 +1,5 @@
 const User = require("../modal/user");
+const bcrypt = require("bcrypt");
 
 exports.getAuth = (req, res, next) => {
   res.render("login");
@@ -6,4 +7,30 @@ exports.getAuth = (req, res, next) => {
 
 exports.getSignup = (req, res, next) => {
   res.render("signup");
+};
+
+exports.postSignup = (req, res, next) => {
+  User.findOne({ where: { email: req.body.email } })
+    .then(result => {
+      if (result === null) {
+        if (req.body.password === req.body.confirm) {
+          bcrypt
+            .hash(req.body.password, 10)
+            .then(password => {
+              User.create({
+                name: req.body.name,
+                email: req.body.email,
+                password: password
+              });
+              res.redirect("/signin");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      } else {
+        console.log(result);
+      }
+    })
+    .catch(err => console.log(err));
 };
