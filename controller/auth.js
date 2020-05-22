@@ -9,6 +9,17 @@ exports.getSignup = (req, res, next) => {
   res.render("signup");
 };
 
+exports.postLogin = (req, res, next) => {
+  User.findOne({ where: { email: req.body.email } })
+    .then(user => {
+      return bcrypt.compare(req.body.password, user.password);
+    })
+    .then(result => {
+      res.redirect("/");
+    })
+    .catch(err => console.log(err));
+};
+
 exports.postSignup = (req, res, next) => {
   User.findOne({ where: { email: req.body.email } })
     .then(result => {
