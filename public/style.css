@@ -44,15 +44,27 @@ nav {
 .main-nav__items {
   list-style: none;
 }
-.main-nav__item {
+.main-nav__item,
+.main-nav__item button {
   font-size: 1.7rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
   display: inline-block;
 }
+.main-nav__item button {
+  cursor: pointer;
+  outline: none;
+}
+
 .main-nav__item a:link,
 .main-nav__item a:visited {
   color: #fff;
   text-decoration: none;
   padding: 1rem 1.5rem;
+}
+.main-nav__item button {
+  background-color: none;
 }
 
 .main-nav__item a:hover {
@@ -75,7 +87,7 @@ nav {
   transition: all 0.2s;
 }
 
-button:hover {
+.btn:hover {
   background-color: rgba(124, 75, 11, 0.767);
 }
 .blog {

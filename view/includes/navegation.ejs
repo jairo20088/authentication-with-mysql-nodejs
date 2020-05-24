@@ -1,0 +1,22 @@
+<nav class="main-nav">
+  <ul class="main-nav__items">
+    <li class="main-nav__item"><a href="/">Home</a></li>
+    <%if(isAuthenticated){%>
+    <li class="main-nav__item"><a href="/blog">Blog</a></li>
+    <%}%>
+  </ul>
+  <ul class="main-nav__items">
+    <%if(isAuthenticated){%>
+    <li class="main-nav__item">
+      <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+      </form>
+    </li>
+    <%} else {%>
+    <li class="main-nav__item">
+      <a class="links" href="/signin">Sign In</a>
+    </li>
+    <li class="main-nav__item"><a class="links" href="/signup">Sign Up</a></li>
+    <%}%>
+  </ul>
+</nav>

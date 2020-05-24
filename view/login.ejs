@@ -8,16 +8,7 @@
     <title>Login</title>
   </head>
   <body>
-    <nav class="main-nav">
-      <ul class="main-nav__items">
-        <li class="main-nav__item"><a href="/">Home</a></li>
-        <li class="main-nav__item"><a href="/blog">Blog</a></li>
-      </ul>
-      <ul class="main-nav__items">
-        <li class="main-nav__item active"><a href="/signin">Sign In</a></li>
-        <li class="main-nav__item"><a href="/signup">Sign Up</a></li>
-      </ul>
-    </nav>
+    <%-include('includes/navegation')%>
     <form class="main__form" action="/login" method="POST">
       <div class="main__form-container">
         <label for="email">Email</label>

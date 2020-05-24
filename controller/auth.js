@@ -12,6 +12,7 @@ exports.getSignup = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
   User.findOne({ where: { email: req.body.email } })
     .then(user => {
+      req.session.isAuthenticated = true;
       return bcrypt.compare(req.body.password, user.password);
     })
     .then(result => {
@@ -44,4 +45,8 @@ exports.postSignup = (req, res, next) => {
       }
     })
     .catch(err => console.log(err));
+};
+exports.postLogout = (req, res, next) => {
+  req.session.destroy();
+  res.redirect("/signin");
 };
