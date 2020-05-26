@@ -21,3 +21,8 @@ exports.postBlog = (req, res, next) => {
     })
     .catch(err => console.log(err));
 };
+exports.deletePost = (req, res, next) => {
+  Blog.destroy({ where: { id: req.body.id } }).then(result => {
+    res.redirect("/blog");
+  });
+};

@@ -25,7 +25,15 @@
     </form>
     <ul class="blog">
       <%posts.forEach(post =>{%>
-      <li><%=post.text%></li>
+      <li>
+        <%=post.text%>
+        <br />
+        <form action="/delete" method="POST">
+          <button class="btn" type="submit">Delete</button>
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+          <input type="hidden" name="id" value="<%=post.id%>" />
+        </form>
+      </li>
       <%})%>
     </ul>
   </body>
