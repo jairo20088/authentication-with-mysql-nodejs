@@ -10,27 +10,23 @@
   <body>
     <%-include('includes/navegation')%>
     <h1>Blog</h1>
+    <form class="main__form" action="/blog" method="POST">
+      <div class="main__form-container">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+      </div>
+      <div class="main__form-container">
+        <label for="text">Text</label>
+        <textarea name="text" id="text"></textarea>
+      </div>
+
+      <button class="btn" type="submit">Add</button>
+      <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+    </form>
     <ul class="blog">
-      <li>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae velit
-        fugit, porro eos in repudiandae deserunt. Dignissimos impedit facere
-        iure voluptate illo. Quas ullam rem id, natus harum recusandae deserunt
-        architecto vel quae laborum, tempore deleniti quis? Veritatis tempore
-        sequi sapiente quisquam est, itaque similique temporibus inventore
-        officia labore iusto excepturi ad earum sit laborum recusandae enim
-        maiores voluptas quasi consequuntur culpa nesciunt. Sapiente expedita et
-        beatae tempore illum velit fugiat ducimus.
-      </li>
-      <li>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae velit
-        fugit, porro eos in repudiandae deserunt. Dignissimos impedit facere
-        iure voluptate illo. Quas ullam rem id, natus harum recusandae deserunt
-        architecto vel quae laborum, tempore deleniti quis? Veritatis tempore
-        sequi sapiente quisquam est, itaque similique temporibus inventore
-        officia labore iusto excepturi ad earum sit laborum recusandae enim
-        maiores voluptas quasi consequuntur culpa nesciunt. Sapiente expedita et
-        beatae tempore illum velit fugiat ducimus.
-      </li>
+      <%posts.forEach(post =>{%>
+      <li><%=post.text%></li>
+      <%})%>
     </ul>
   </body>
 </html>

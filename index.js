@@ -6,6 +6,7 @@ const authRoute = require("./routes/auth");
 const homepageRoute = require("./routes/index");
 const sequelize = require("./util/database");
 const bodyParser = require("body-parser");
+const csrf = require("csurf");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -29,10 +30,12 @@ app.use(
     store: store
   })
 );
+const csrfCall = csrf();
 
+app.use(csrfCall);
 app.use((req, res, next) => {
-  res.locals.isAuthenticated = req.session.isAuthenticated;
-
+  res.locals.isAuthenticated = true; //req.session.isAuthenticated;
+  res.locals.csrfToken = req.csrfToken();
   next();
 });
 
