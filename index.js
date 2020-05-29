@@ -9,6 +9,9 @@ const bodyParser = require("body-parser");
 const csrf = require("csurf");
 const app = express();
 
+const User = require("./modal/user");
+const Blog = require("./modal/blog");
+
 app.set("view engine", "ejs");
 app.set("views", "view");
 app.use(express.static(path.join(__dirname, "public")));
@@ -18,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const options = {
   host: "localhost",
   user: "root",
-  password: "jairo20089",
+  password: "123456789",
   database: "authentication"
 };
 const store = new mySQLStore(options);
@@ -34,13 +37,17 @@ const csrfCall = csrf();
 
 app.use(csrfCall);
 app.use((req, res, next) => {
-  res.locals.isAuthenticated = true; //req.session.isAuthenticated;
+  res.locals.isAuthenticated = req.session.isAuthenticated;
   res.locals.csrfToken = req.csrfToken();
+
   next();
 });
 
 app.use(authRoute);
 app.use(homepageRoute);
+
+Blog.belongsTo(User, { consraints: true });
+User.hasMany(Blog);
 
 sequelize
   .sync()

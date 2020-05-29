@@ -10,12 +10,16 @@ exports.getSignup = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
+  let myUSer;
   User.findOne({ where: { email: req.body.email } })
     .then(user => {
-      req.session.isAuthenticated = true;
+      myUSer = user;
+
       return bcrypt.compare(req.body.password, user.password);
     })
     .then(result => {
+      req.session.isAuthenticated = true;
+      req.session.user = myUSer;
       res.redirect("/");
     })
     .catch(err => console.log(err));
