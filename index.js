@@ -39,8 +39,20 @@ app.use(csrfCall);
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isAuthenticated;
   res.locals.csrfToken = req.csrfToken();
-
   next();
+});
+
+app.use((req, res, next) => {
+  if (!req.session.user) {
+    next();
+  } else {
+    User.findByPk(req.session.user.id)
+      .then(user => {
+        req.user = user;
+        next();
+      })
+      .catch(err => console.log(err));
+  }
 });
 
 app.use(authRoute);

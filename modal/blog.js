@@ -15,6 +15,10 @@ const Blog = sequelize.define("blog", {
   text: {
     type: Sequelize.TEXT("longtext"),
     allowNull: false
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: true
   }
 });
 module.exports = Blog;

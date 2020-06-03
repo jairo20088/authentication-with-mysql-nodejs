@@ -2,29 +2,32 @@ const Blog = require("../modal/blog");
 const User = require("../modal/user");
 
 exports.getHomepage = (req, res, next) => {
-  res.render("homepage");
+  Blog.findAll()
+    .then(result => {
+      res.render("homepage", { posts: result });
+    })
+    .catch(err => console.log(err));
 };
 
 exports.getBlog = (req, res, next) => {
-  Blog.findAll()
+  Blog.findAll({ where: { userId: req.session.user.id } })
     .then(result => {
       res.render("blog", { posts: result });
     })
     .catch(err => console.log(err));
 };
 exports.postBlog = (req, res, next) => {
-  User.findByPk(req.session.user.id)
-    .then(user => {
-      return user
-        .createBlog({
-          title: req.body.title,
-          text: req.body.text
-        })
-        .then(result => {
-          res.redirect("/blog");
-        });
+  req.user
+    .createBlog({
+      title: req.body.title,
+      text: req.body.text,
+      name: req.session.user.name
     })
-    .catch(err => console.log("nt found"));
+    .then(resul => {
+      res.redirect("/blog");
+      console.log(resul);
+    })
+    .catch(err => console.log(err));
 
   /* Blog.create({
     title: req.body.title,

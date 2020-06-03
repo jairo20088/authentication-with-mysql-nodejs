@@ -10,5 +10,18 @@
   <body>
     <%-include('includes/navegation')%>
     <h1>Home page</h1>
+    <ul class="blog">
+      <%posts.forEach(post =>{%>
+      <li>
+        <h3><%=post.name%></h3>
+        <%=post.text%>
+        <!-- <br />
+        <form action="/delete" method="POST">
+          <button class="btn" type="submit">Delete</button>
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+          <input type="hidden" name="id" value="<%=post.id%>" />
+        </form> -->
+      </li>
+      <%})%>
   </body>
 </html>
