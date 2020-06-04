@@ -8,15 +8,31 @@
     <title>Login</title>
   </head>
   <body>
-    <%-include('includes/navegation')%>
+    <%-include('includes/navegation')%> <%if(errorMessage){%>
+    <div class="errorMessage">
+      <div>Email or Password are invalid!</div>
+    </div>
+    <%}%>
     <form class="main__form" action="/login" method="POST">
       <div class="main__form-container">
         <label for="email">Email</label>
-        <input type="email" name="email" id="email" />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="<%=errorMessage%>"
+          value="<%=oldLogin.email%>"
+        />
       </div>
       <div class="main__form-container">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="<%=errorMessage%>"
+          value="<%=oldLogin.password%>"
+        />
       </div>
       <button class="btn" type="submit">Sigh In</button>
       <input type="hidden" name="_csrf" value="<%=csrfToken%>" />

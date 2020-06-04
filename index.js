@@ -7,6 +7,8 @@ const homepageRoute = require("./routes/index");
 const sequelize = require("./util/database");
 const bodyParser = require("body-parser");
 const csrf = require("csurf");
+const flash = require("connect-flash");
+
 const app = express();
 
 const User = require("./modal/user");
@@ -41,6 +43,7 @@ app.use((req, res, next) => {
   res.locals.csrfToken = req.csrfToken();
   next();
 });
+app.use(flash());
 
 app.use((req, res, next) => {
   if (!req.session.user) {
